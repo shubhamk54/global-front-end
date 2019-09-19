@@ -1,0 +1,10 @@
+{
+  "name": "adform-tech-assignment",
+  "version": "1.0.0",
+  "description": "Technical assigment for Adform",
+  "main": "index.js",
+  "repository": "git@bitbucket.org:Shubhamk54/adformtechassign.git",
+  "author": "Shubham Kale <shubhamkale54@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
