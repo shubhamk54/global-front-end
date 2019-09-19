@@ -1,0 +1,20 @@
+
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/build
+
+# OS specifics misc
+.DS_Store
+.env.local
+.env.development.local
+package-lock.json
+.nsprc
+yarn.lock
+
+#VS code
+.vscode
