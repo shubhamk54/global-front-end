@@ -1,7 +1,6 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-
 const path = require("path");
 
 
@@ -121,6 +120,7 @@ module.exports = {
         alias: {
             Store: path.resolve(__dirname, 'app/src/store/'),
             Containers: path.resolve(__dirname, 'app/src/containers/'),
+            Components: path.resolve(__dirname, 'app/src/components/'),
             Assets: path.resolve(__dirname, 'app/src/assets'),
         },
         extensions: ['.js', '.jsx', '.json', '*'],
