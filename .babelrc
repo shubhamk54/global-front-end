@@ -29,6 +29,7 @@
             ],
             "alias": {
               "Containers": "./app/src/containers",
+              "Components": "./app/src/components",
               "Store": "./app/src/store",
               "Assets": "./app/src/assets"
             }
