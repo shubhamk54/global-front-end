@@ -52,12 +52,18 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-                options: {
-                    presets: ['@babel/preset-env']
-                }
+                test: /\.jsx?$/,
+                exclude: [/node_modules/],
+                use: [{
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            ['@babel/env'],
+                            '@babel/react',
+                            '@babel/flow'],
+                        plugins: ['@babel/plugin-syntax-dynamic-import', '@babel/plugin-proposal-class-properties', '@babel/plugin-transform-runtime', '@babel/plugin-transform-regenerator'],
+                    },
+                }],
             },
             {
                 test: /\.html$/,
