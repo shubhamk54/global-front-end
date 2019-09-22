@@ -1,14 +1,13 @@
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
-export default function authReducer(state = initialState.dataList, action) {
+export default function dataReducer(state = initialState.campaignData, action) {
     switch (action.type) {
-
-        case types.FETCH_DATA:
-            return Object.assign({}, {
-                tabular: state.tabular,
-                isFetching: true,
-            }); default:
-            return state;
+        case types.FETCH_CAMPAIGN_DATA:
+            return {
+                campaignData: { ...action.campaignData, gridData: initialState.campaignData.gridData },
+            };
+        default:
+            return { campaignData: state };
     }
 }
