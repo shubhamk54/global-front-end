@@ -130,11 +130,13 @@ CampaignView.defaultProps = {
         },
         {
             title: 'Start Date',
-            dataKey: 'startDate'
+            dataKey: 'startDate',
+            type: 'date',
         },
         {
             title: 'End Date',
-            dataKey: 'endDate'
+            dataKey: 'endDate',
+            type: 'date',
         },
         {
             title: 'Active',
@@ -143,7 +145,8 @@ CampaignView.defaultProps = {
         },
         {
             title: 'Budget',
-            dataKey: 'Budget'
+            dataKey: 'Budget',
+            type: 'amount',
         },
     ]
 }
