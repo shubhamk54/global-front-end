@@ -1,7 +1,9 @@
 
-const SI_SYMBOL = ["", "k", "M", "G", "T", "P", "E"];
 
 export function abbreviateAmount(amount) {
+    
+    const SI_SYMBOL = ["", "k", "M", "G", "T", "P", "E"];
+
     // what tier? (determines SI symbol)
     const tier = Math.log10(amount) / 3 | 0;
 
@@ -18,7 +20,6 @@ export function abbreviateAmount(amount) {
     // format number and add suffix
     return scaled.toFixed(1) + suffix;
 }
-
 
 export function validateCampaignData(gridData) {
 
