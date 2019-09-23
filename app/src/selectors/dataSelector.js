@@ -12,21 +12,19 @@ export function campaignDataSelector({ gridData = [], startDate, endDate, search
 
         const startDateEpoch = new Date(dataRow.startDate).getTime();
         const endDateEpoch = new Date(dataRow.endDate).getTime();
-        // Filter for matching name
 
         if (dataRow.name.toLowerCase().indexOf(searchValue.toLowerCase()) > -1
             && (isNaN(userSelectedStartDateEpoch) || startDateEpoch >= userSelectedStartDateEpoch)
             && (isNaN(userSelectedEndDateEpoch) || endDateEpoch <= userSelectedEndDateEpoch)
             && (isNaN(userSelectedStartDateEpoch) || endDateEpoch >= userSelectedStartDateEpoch)
         ) {
-
             formattedDataGrid = formattedDataGrid.concat({
                 ...dataRow,
                 active: startDateEpoch <= currentDateEpoch && currentDateEpoch <= endDateEpoch ? { title: 'Active', type: 'success' } : { title: 'Inactive', type: 'danger' }
             });
         }
-
     });
+
     return formattedDataGrid;
 }
 

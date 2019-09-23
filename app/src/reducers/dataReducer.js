@@ -7,6 +7,19 @@ export default function dataReducer(state = initialState.campaignData, action) {
             return {
                 campaignData: { ...action.campaignData, gridData: initialState.campaignData.gridData },
             };
+
+        case types.ADD_CAMPAIGN_DATA:
+            return {
+                campaignData: { gridData: action.gridData }
+            };
+        case types.INVALID_CAMPAIGN_DATA:
+            return {
+                campaignData: {
+                    gridData: [],
+                    errorMsg: action.validationMsg,
+                }
+            };
+
         default:
             return { campaignData: state };
     }

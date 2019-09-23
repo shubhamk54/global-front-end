@@ -6,10 +6,11 @@ import { connect } from 'react-redux';
 import Datatable from '../../components/DataTable/DataTable.js';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import SearchInput from '../../components/SearchInput/SearchInput.js';
+import NoDataAvailable from '../../components/NoDataAvailable/NoDataAvailable.js';
 import { Navbar, Row, Col } from "react-bootstrap";
 
 // redux actions & selectors
-import { fetchCampaignDataAction } from '../../actions/dataActions.js';
+import { fetchCampaignDataAction, addCampaignDataAction } from '../../actions/dataActions.js';
 import { campaignDataSelector, campaignNamesSelector } from '../../selectors/dataSelector.js';
 
 // Styles
@@ -36,7 +37,7 @@ export class CampaignView extends React.Component {
     }
 
     componentWillMount() {
-        this.props.fetchCampaignData();
+        window.AddCampaigns = this.props.addCampaignData;
     }
 
     calendarDayChange = (type) => (day) => {
@@ -104,10 +105,15 @@ export class CampaignView extends React.Component {
                     />
                 </Col>
             </Navbar>
-            <Datatable
+            {this.props.gridData.length > 0 ? <Datatable
                 data={this.props.gridData}
                 columns={this.props.columns}
             />
+                : <NoDataAvailable
+                    title='Campaign data not available'
+                    subTitle={this.props.errorMsg ? this.props.errorMsg : 'Open browser console and call AddCampaigns() method to add you data. '}
+                />
+            }
         </React.Fragment>
     }
 }
@@ -116,6 +122,7 @@ CampaignView.propTypes = {
     gridData: PropTypes.array.isRequired,
     columns: PropTypes.array.isRequired,
     fetchCampaignData: PropTypes.func.isRequired,
+    errorMsg: PropTypes.string,
 };
 
 CampaignView.defaultProps = {
@@ -155,13 +162,14 @@ function mapStateToProps(state) {
     return {
         gridData: campaignDataSelector(state.data.campaignData),
         campaignNames: campaignNamesSelector(state.data.campaignData.gridData),
+        errorMsg: state.data.campaignData.errorMsg,
     };
 }
-
 
 function mapDispatchToProps(dispatch) {
     return {
         fetchCampaignData: (startDate, endDate, name) => dispatch(fetchCampaignDataAction(startDate, endDate, name)),
+        addCampaignData: (gridData) => dispatch(addCampaignDataAction(gridData)),
     };
 }
 
