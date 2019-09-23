@@ -1,6 +1,6 @@
 export default {
   campaignData: {
     gridData: [],
-    errorMsg: undefined,
+    dataDesc: undefined,
   },
 };

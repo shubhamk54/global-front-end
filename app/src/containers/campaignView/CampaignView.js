@@ -31,15 +31,12 @@ export class CampaignView extends React.Component {
             endDate: undefined,
             userInput: "",
         };
+        window.AddCampaigns = props.addCampaignData;
+
         this.calendarDayChange = this.calendarDayChange.bind(this);
         this.onSearchChange = this.onSearchChange.bind(this);
 
     }
-
-    componentWillMount() {
-        window.AddCampaigns = this.props.addCampaignData;
-    }
-
     calendarDayChange = (type) => (day) => {
         this.setState({
             [type]: day,
@@ -53,20 +50,8 @@ export class CampaignView extends React.Component {
     }
 
     render() {
-        // TODO: move this business-logic to the selector.
-        const currentDateEpoch = new Date().getTime();
-        let formattedData = [];
-        this.props.gridData.forEach(dataRow => {
-            const startDateEpoch = new Date(dataRow.startDate).getTime();
-            const endDateEpoch = new Date(dataRow.endDate).getTime();
-            formattedData = formattedData.concat({
-                ...dataRow,
-                active: startDateEpoch <= currentDateEpoch && currentDateEpoch <= endDateEpoch ? { title: 'Active', type: 'success' } : { title: 'Inactive', type: 'danger' }
-            });
-        });
 
         return <React.Fragment>
-
             <Navbar className="bg-light justify-content-between">
                 <Row >
                     <Col>
@@ -75,11 +60,6 @@ export class CampaignView extends React.Component {
                             format={FORMAT}
                             parseDate={parseDate}
                             placeholder={`Start date`}
-                            dayPickerProps={{
-                                showWeekNumbers: true,
-                                todayButton: 'Today',
-                            }}
-
                             onDayClick={this.handleDayClick}
                             onDayChange={this.calendarDayChange('startDate')}
                         />
@@ -111,7 +91,7 @@ export class CampaignView extends React.Component {
             />
                 : <NoDataAvailable
                     title='Campaign data not available'
-                    subTitle={this.props.errorMsg ? this.props.errorMsg : 'Open browser console and call AddCampaigns() method to add you data. '}
+                    subTitle={this.props.dataDesc ? this.props.dataDesc : 'Open browser console and call AddCampaigns() method to add you data. '}
                 />
             }
         </React.Fragment>
@@ -122,7 +102,7 @@ CampaignView.propTypes = {
     gridData: PropTypes.array.isRequired,
     columns: PropTypes.array.isRequired,
     fetchCampaignData: PropTypes.func.isRequired,
-    errorMsg: PropTypes.string,
+    dataDesc: PropTypes.string,
 };
 
 CampaignView.defaultProps = {
@@ -162,7 +142,7 @@ function mapStateToProps(state) {
     return {
         gridData: campaignDataSelector(state.data.campaignData),
         campaignNames: campaignNamesSelector(state.data.campaignData.gridData),
-        errorMsg: state.data.campaignData.errorMsg,
+        dataDesc: state.data.campaignData.dataDesc,
     };
 }
 

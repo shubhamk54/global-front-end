@@ -23,7 +23,6 @@ export function abbreviateAmount(amount) {
 export function validateCampaignData(gridData) {
 
     let validationMsg;
-    let isDataValidated = true;
 
     if (!Array.isArray(gridData)) {
         validationMsg = 'Given data is not array.';
@@ -31,14 +30,21 @@ export function validateCampaignData(gridData) {
     if (!validationMsg && gridData.length === 0) {
         validationMsg = 'Given data is empty.';
     }
-    if (!validationMsg && gridData.length === 0) {
-        //TODO: Add JSON KEY validations
-        validationMsg = 'key contain space.';
+    if (!validationMsg && gridData.length > 0) {
+        outer_loop:
+        for (const dataRow in gridData) {
+            const keys = Object.keys(gridData[dataRow]);
+            for (const key in keys) {
+                const jsonKey = keys[key];
+                if (/\s/.test(jsonKey)) {
+                    validationMsg = `JSON key: "${jsonKey}" have space in it. keys should not contain space.`;
+                    break outer_loop;
+                };
+            }
+        }
     }
-
-    console.log('validationMsg', validationMsg);
     return {
-        isDataValidated: false,
+        isDataValidated: validationMsg ? false : true,
         validationMsg: validationMsg,
     };
 }

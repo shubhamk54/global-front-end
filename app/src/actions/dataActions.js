@@ -16,12 +16,12 @@ export function fetchCampaignDataAction(startDate, endDate, searchValue = "") {
 
 export function addCampaignDataAction(gridData) {
   const { isDataValidated, validationMsg } = validateCampaignData(gridData);
-  console.log('ADD_CAMPAIGN_DATA with', gridData);
 
   return isDataValidated ? {
     type: types.ADD_CAMPAIGN_DATA,
     receivedAt: Date.now(),
     gridData,
+    noDataMessage: 'Campaign Data not available'
   } : {
       type: types.INVALID_CAMPAIGN_DATA,
       validationMsg,
