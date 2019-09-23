@@ -5,26 +5,26 @@ import './Badge.scss';
 
 
 function Badge({ ...props }) {
-    const { displayName, variant } = props;
-    const badgeClasses = classNames(
-        'badge',
-        variant && `badge-${variant}`,
-    );
+  const { displayName, variant } = props;
+  const badgeClasses = classNames(
+    'badge',
+    variant && `badge-${variant}`,
+  );
 
-    return <span className={displayName && badgeClasses}>{displayName}</span>;
+  return <span className={displayName && badgeClasses}>{displayName}</span>;
 }
 
 Badge.defaultProps = {
-    variant: 'info',
+  variant: 'info',
 };
 
 Badge.propTypes = {
-    variant: PropTypes.oneOf([
-        'danger',
-        'success',
-        'info',
-    ]).isRequired,
-    displayName: PropTypes.string.isRequired,
+  variant: PropTypes.oneOf([
+    'danger',
+    'success',
+    'info',
+  ]).isRequired,
+  displayName: PropTypes.string.isRequired,
 };
 
 

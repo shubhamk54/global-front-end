@@ -16,11 +16,6 @@ import { campaignDataSelector, campaignNamesSelector } from '../../selectors/dat
 // Styles
 import 'react-day-picker/lib/style.css';
 
-//constants
-const FORMAT = 'MM/dd/yyyy';
-const INIT_DATA_OPS_MSG = 'Open browser console and call AddCampaigns() method to add you data. '
-const SAMPLE_CAMPAIGN_DATA = '[\n  {"id":1,"name":"Photojam","startDate":"7/25/2018","endDate":"7/27/2019", "Budget":858131},\n  {"id":2,"name":"Realbridge","startDate":"03/05/2019","endDate":"12/12/2019 ","Budget":505602} \n ]';
-
 import {
     formatDate,
     parseDate
@@ -36,7 +31,7 @@ export class CampaignView extends React.Component {
             userInput: "",
         };
         window.AddCampaigns = props.addCampaignData;
-        console.log('***Call AddCampaigns method with below expected format*** \n', SAMPLE_CAMPAIGN_DATA);
+        console.log('***Call AddCampaigns method with below expected format*** \n', __SAMPLE_CAMPAIGN_DATA__);
         this.calendarDayChange = this.calendarDayChange.bind(this);
         this.onSearchChange = this.onSearchChange.bind(this);
 
@@ -61,7 +56,7 @@ export class CampaignView extends React.Component {
                     <Col>
                         <DayPickerInput
                             formatDate={formatDate}
-                            format={FORMAT}
+                            format={__DATE_FORMAT__}
                             parseDate={parseDate}
                             placeholder={`Start date`}
                             onDayClick={this.handleDayClick}
@@ -72,7 +67,7 @@ export class CampaignView extends React.Component {
                         <DayPickerInput
                             selectedDays={this.state.endDate}
                             formatDate={formatDate}
-                            format={FORMAT}
+                            format={__DATE_FORMAT__}
                             parseDate={parseDate}
                             placeholder={`End date`}
                             onDayChange={this.calendarDayChange('endDate')}
@@ -96,7 +91,7 @@ export class CampaignView extends React.Component {
             />
                 : <NoDataAvailable
                     title='Campaign data not available'
-                    subTitle={this.props.dataDesc ? this.props.dataDesc : INIT_DATA_OPS_MSG}
+                    subTitle={this.props.dataDesc ? this.props.dataDesc : __INIT_DATA_OPS_MSG__}
                 />
             }
         </React.Fragment>
