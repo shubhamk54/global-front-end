@@ -15,7 +15,11 @@ import { campaignDataSelector, campaignNamesSelector } from '../../selectors/dat
 
 // Styles
 import 'react-day-picker/lib/style.css';
+
+//constants
 const FORMAT = 'MM/dd/yyyy';
+const INIT_DATA_OPS_MSG = 'Open browser console and call AddCampaigns() method to add you data. '
+const SAMPLE_CAMPAIGN_DATA = '[\n  {"id":1,"name":"Photojam","startDate":"7/25/2018","endDate":"7/27/2019", "Budget":858131},\n  {"id":2,"name":"Realbridge","startDate":"03/05/2019","endDate":"12/12/2019 ","Budget":505602} \n ]';
 
 import {
     formatDate,
@@ -32,7 +36,7 @@ export class CampaignView extends React.Component {
             userInput: "",
         };
         window.AddCampaigns = props.addCampaignData;
-
+        console.log('***Call AddCampaigns method with below expected format*** \n', SAMPLE_CAMPAIGN_DATA);
         this.calendarDayChange = this.calendarDayChange.bind(this);
         this.onSearchChange = this.onSearchChange.bind(this);
 
@@ -52,7 +56,7 @@ export class CampaignView extends React.Component {
     render() {
 
         return <React.Fragment>
-            <Navbar className="bg-light justify-content-between">
+            {this.props.enableFilters && <Navbar className="bg-light justify-content-between">
                 <Row >
                     <Col>
                         <DayPickerInput
@@ -85,13 +89,14 @@ export class CampaignView extends React.Component {
                     />
                 </Col>
             </Navbar>
+            }
             {this.props.gridData.length > 0 ? <Datatable
                 data={this.props.gridData}
                 columns={this.props.columns}
             />
                 : <NoDataAvailable
                     title='Campaign data not available'
-                    subTitle={this.props.dataDesc ? this.props.dataDesc : 'Open browser console and call AddCampaigns() method to add you data. '}
+                    subTitle={this.props.dataDesc ? this.props.dataDesc : INIT_DATA_OPS_MSG}
                 />
             }
         </React.Fragment>
@@ -103,6 +108,7 @@ CampaignView.propTypes = {
     columns: PropTypes.array.isRequired,
     fetchCampaignData: PropTypes.func.isRequired,
     dataDesc: PropTypes.string,
+    enableFilters: PropTypes.bool,
 };
 
 CampaignView.defaultProps = {
@@ -143,6 +149,7 @@ function mapStateToProps(state) {
         gridData: campaignDataSelector(state.data.campaignData),
         campaignNames: campaignNamesSelector(state.data.campaignData.gridData),
         dataDesc: state.data.campaignData.dataDesc,
+        enableFilters: state.data.campaignData.enableFilters,
     };
 }
 

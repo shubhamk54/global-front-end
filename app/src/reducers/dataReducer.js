@@ -17,6 +17,7 @@ export default function dataReducer(state = initialState.campaignData, action) {
                 campaignData: {
                     gridData: action.gridData,
                     dataDesc: action.noDataMessage,
+                    enableFilters: true,
                 }
             };
         case types.INVALID_CAMPAIGN_DATA:
