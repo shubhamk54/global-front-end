@@ -12,12 +12,12 @@ export function campaignDataSelector({ gridData = [], startDate, endDate, search
 
         const startDateEpoch = new Date(dataRow.startDate).getTime();
         const endDateEpoch = new Date(dataRow.endDate).getTime();
-
         // Filter for matching name
+
         if (dataRow.name.toLowerCase().indexOf(searchValue.toLowerCase()) > -1
-            && startDateEpoch >= userSelectedStartDateEpoch
-            && endDateEpoch <= userSelectedEndDateEpoch
-            && endDateEpoch >= userSelectedStartDateEpoch
+            && (isNaN(userSelectedStartDateEpoch) || startDateEpoch >= userSelectedStartDateEpoch)
+            && (isNaN(userSelectedEndDateEpoch) || endDateEpoch <= userSelectedEndDateEpoch)
+            && (isNaN(userSelectedStartDateEpoch) || endDateEpoch >= userSelectedStartDateEpoch)
         ) {
 
             formattedDataGrid = formattedDataGrid.concat({

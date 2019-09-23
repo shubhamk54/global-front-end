@@ -37,8 +37,7 @@ class SearchInput extends Component {
         }, () => this.props.onChange(this.props.name, inputValue, true));
     };
 
-    onClick = value => {
-        console.log(value);
+    onOptionClick = value => {
         this.setState({
             activeOption: 0,
             filteredOptions: [],
@@ -72,6 +71,12 @@ class SearchInput extends Component {
         }
     };
 
+    onSearchClick = e => {
+        this.setState({
+            showOptions: false,
+        }, () => this.props.onSearchClick());
+    };
+
     render() {
         return (
             <div className="search-input">
@@ -80,10 +85,15 @@ class SearchInput extends Component {
                     onChange={this.onChange}
                     onKeyDown={this.onKeyDown}
                     value={this.props.value}
+                    placeholder={this.props.placeholder}
                 />
+                <button
+                    onClick={this.onSearchClick}
+                ><i className="fa fa-search"></i></button>
+
                 {this.state.filteredOptions.length > 0 && this.state.showOptions && this.props.value && <OptionList
                     options={this.state.filteredOptions}
-                    onClick={this.onClick}
+                    onClick={this.onOptionClick}
                     selectedOptionIndex={this.state.activeOption}
                 />}
             </div>
@@ -100,10 +110,12 @@ SearchInput.propTypes = {
     ]).isRequired,
     suggestedOptions: PropTypes.array,
     onChange: PropTypes.func.isRequired,
+    onSearchClick: PropTypes.func,
 };
 
 SearchInput.defaultProps = {
     suggestedOptions: [],
+    placeholder: 'Search...',
 }
 
 export default SearchInput;

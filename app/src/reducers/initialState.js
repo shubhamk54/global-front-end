@@ -1,7 +1,7 @@
 export default {
   campaignData: {
     gridData: [
-      { "id": 1, "name": "Divavu", "startDate": "9/19/2017", "endDate": "3/9/2018", "active": "Active", "Budget": 88377 },
+      { "id": 1, "name": "Divavu", "startDate": "9/19/2017", "endDate": "3/9/2018", "active": "Active", "Budget": 8837711 },
       { "id": 2, "name": "Jaxspan", "startDate": "11/21/2019", "endDate": "2/21/2019", "active": "Active", "Budget": 608715 },
       { "id": 3, "name": "Miboo", "startDate": "11/1/2018", "endDate": "6/20/2018", "active": "In-Active", "Budget": 239507 },
       { "id": 4, "name": "Trilith", "startDate": "8/25/2018", "endDate": "11/30/2019", "active": "Active", "Budget": 179838 },
