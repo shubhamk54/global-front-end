@@ -14,7 +14,7 @@ class DataTable extends Component {
             {columns.map((column, columnIndex) => {
                 switch (column.type) {
                     case 'pill':
-                        return <td key={columnIndex}>
+                        return <td align="center" key={columnIndex}>
                             <Badge
                                 displayName={dataRow[column.dataKey].title}
                                 variant={dataRow[column.dataKey].type} />
@@ -29,16 +29,12 @@ class DataTable extends Component {
 
     render() {
         return (
-            <div>
-                {
-                    this.props.data.length > 0 && <table className='data-table'>
-                        <tbody>
-                            <tr>{this.renderTableHeader(this.props.columns)}</tr>
-                            {this.renderTableData(this.props.columns, this.props.data)}
-                        </tbody>
-                    </table>
-                }
-            </div>
+            this.props.data.length > 0 && <table className='data-table'>
+                <tbody>
+                    <tr>{this.renderTableHeader(this.props.columns)}</tr>
+                    {this.renderTableData(this.props.columns, this.props.data)}
+                </tbody>
+            </table>
         )
     }
 }

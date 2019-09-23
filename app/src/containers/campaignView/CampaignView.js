@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Datatable from '../../components/DataTable/DataTable.js';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import SearchInput from '../../components/SearchInput/SearchInput.js';
+import { Navbar, Row, Col } from "react-bootstrap";
 
 // redux actions & selectors
 import { fetchCampaignDataAction } from '../../actions/dataActions.js';
@@ -13,7 +14,6 @@ import { campaignDataSelector, campaignNamesSelector } from '../../selectors/dat
 
 // Styles
 import 'react-day-picker/lib/style.css';
-
 const FORMAT = 'MM/dd/yyyy';
 
 import {
@@ -66,29 +66,44 @@ export class CampaignView extends React.Component {
 
         return <React.Fragment>
 
-            <DayPickerInput
-                selectedDays={this.state.startDate}
-                formatDate={formatDate}
-                format={FORMAT}
-                parseDate={parseDate}
-                placeholder={`Start date`}
-                onDayChange={this.calendarDayChange('startDate')}
-            />
+            <Navbar className="bg-light justify-content-between">
+                <Row >
+                    <Col>
+                        <DayPickerInput
+                            formatDate={formatDate}
+                            format={FORMAT}
+                            parseDate={parseDate}
+                            placeholder={`Start date`}
+                            dayPickerProps={{
+                                showWeekNumbers: true,
+                                todayButton: 'Today',
+                            }}
 
-            <DayPickerInput
-                selectedDays={this.state.endDate}
-                formatDate={formatDate}
-                format={FORMAT}
-                parseDate={parseDate}
-                placeholder={`End date`}
-                onDayChange={this.calendarDayChange('endDate')}
-            />
-            <SearchInput
-                suggestedOptions={this.props.campaignNames}
-                name='userInput'
-                onChange={this.onSearchChange}
-                value={this.state['userInput']}
-            />
+                            onDayClick={this.handleDayClick}
+                            onDayChange={this.calendarDayChange('startDate')}
+                        />
+                    </Col>
+                    <Col >
+                        <DayPickerInput
+                            selectedDays={this.state.endDate}
+                            formatDate={formatDate}
+                            format={FORMAT}
+                            parseDate={parseDate}
+                            placeholder={`End date`}
+                            onDayChange={this.calendarDayChange('endDate')}
+                        />
+                    </Col>
+                </Row>
+                <Col>
+                    <SearchInput
+                        suggestedOptions={this.props.campaignNames}
+                        name='userInput'
+                        onChange={this.onSearchChange}
+                        value={this.state.userInput}
+                        onSearchClick={() => this.props.fetchCampaignData(this.state.startDate, this.state.endDate, this.state.userInput)}
+                    />
+                </Col>
+            </Navbar>
             <Datatable
                 data={this.props.gridData}
                 columns={this.props.columns}
