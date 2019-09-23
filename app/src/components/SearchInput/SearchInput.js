@@ -17,7 +17,7 @@ class SearchInput extends Component {
         super(props);
 
         this.state = {
-            activeOption: 0,
+            activeOption: -1,
             filteredOptions: [],
             showOptions: false,
         };
@@ -31,7 +31,6 @@ class SearchInput extends Component {
         );
 
         this.setState({
-            activeOption: 0,
             filteredOptions,
             showOptions: true,
         }, () => this.props.onChange(this.props.name, inputValue, true));
@@ -77,6 +76,12 @@ class SearchInput extends Component {
         }, () => this.props.onSearchClick());
     };
 
+    onInputClick = e => {
+        this.setState(prevState => ({
+            showOptions: !prevState.showOptions
+        }));
+    }
+
     render() {
         return (
             <div className="search-input">
@@ -84,6 +89,7 @@ class SearchInput extends Component {
                     type="text"
                     onChange={this.onChange}
                     onKeyDown={this.onKeyDown}
+                    onClick={this.onInputClick}
                     value={this.props.value}
                     placeholder={this.props.placeholder}
                 />

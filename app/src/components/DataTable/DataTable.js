@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Badge from '../Badge/Badge.js';
 import './DataTable.scss';
 
-import { abbreviateAmount } from '../../utils/dateUtils.js';
+import { abbreviateAmount } from '../../utils/dataUtils.js';
 
 class DataTable extends Component {
 
