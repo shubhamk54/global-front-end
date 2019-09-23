@@ -3,12 +3,11 @@ import { withRouter } from 'react-router-dom';
 import Main from './Main.js';
 
 export class App extends Component {
-
   constructor(props) {
     super(props);
   }
-  render() {
 
+  render() {
     return (
       <div className="layout-wrapper">
         <Main {...this.props} />
