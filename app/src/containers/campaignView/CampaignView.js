@@ -56,6 +56,7 @@ export class CampaignView extends React.Component {
                 <Row >
                     <Col>
                         <DayPickerInput
+                            selectedDays={this.state.startDate}
                             formatDate={formatDate}
                             parseDate={parseDate}
                             placeholder={`Start date`}
