@@ -6,7 +6,7 @@ export function abbreviateAmount(amount) {
   const tier = Math.log10(amount) / 3 | 0;
 
   // if zero, we don't need a suffix
-  if (tier == 0) return amount;
+  if (tier === 0) return amount;
 
   // get suffix and determine scale
   const suffix = SI_SYMBOL[tier];

@@ -4,7 +4,6 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 import CampaignView from 'Containers/campaignView/CampaignView.js';
 
@@ -25,12 +24,5 @@ class Main extends Component {
     );
   }
 }
-
-Main.propTypes = {
-};
-
-Main.defaultProps = {
-};
-
 
 export default (Main);

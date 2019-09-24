@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import { validateCampaignData } from '../utils/dataUtils.js';
+import { validateCampaignData } from '../utils/dataUtils';
 
 export function fetchCampaignDataAction(startDate, endDate, searchValue = '') {
   return {
@@ -20,7 +20,7 @@ export function addCampaignDataAction(gridData) {
     type: types.ADD_CAMPAIGN_DATA,
     receivedAt: Date.now(),
     gridData,
-    noDataMessage: 'Campaign Data not available',
+    noDataMessage: 'Please update criteria using available filters',
   } : {
     type: types.INVALID_CAMPAIGN_DATA,
     validationMsg,
