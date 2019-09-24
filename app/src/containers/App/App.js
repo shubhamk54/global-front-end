@@ -3,10 +3,6 @@ import { withRouter } from 'react-router-dom';
 import Main from './Main.js';
 
 export class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="layout-wrapper">
@@ -15,9 +11,5 @@ export class App extends Component {
     );
   }
 }
-
-App.propTypes = {
-};
-
 
 export default withRouter(App);

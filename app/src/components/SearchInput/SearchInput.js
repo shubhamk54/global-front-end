@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import OptionList from './OptionsList.js';
+import OptionList from './OptionsList';
 
 import './SearchInput.scss';
 

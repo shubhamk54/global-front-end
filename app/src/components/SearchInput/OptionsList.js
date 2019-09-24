@@ -23,6 +23,8 @@ function OptionsList({ ...props }) {
 
 OptionsList.propTypes = {
   options: PropTypes.array.isRequired,
+  selectedOptionIndex: PropTypes.number,
+  onClick: PropTypes.func,
 };
 
 

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Badge from '../Badge/Badge.js';
+import Badge from '../Badge/Badge';
 import './DataTable.scss';
 
-import { abbreviateAmount } from '../../utils/dataUtils.js';
+import { abbreviateAmount } from '../../utils/dataUtils';
 
 class DataTable extends Component {
   renderTableHeader(columns) {

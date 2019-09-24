@@ -13,13 +13,14 @@ import { Navbar, Row, Col } from "react-bootstrap";
 import { fetchCampaignDataAction, addCampaignDataAction } from '../../actions/dataActions.js';
 import { campaignDataSelector, campaignNamesSelector } from '../../selectors/dataSelector.js';
 
-// Styles
-import 'react-day-picker/lib/style.css';
-
+// Utils
 import {
     formatDate,
-    parseDate
-} from '../../utils/dateUtils.js';
+    parseDate,
+} from 'react-day-picker/moment';
+
+// Styles
+import 'react-day-picker/lib/style.css';
 
 
 export class CampaignView extends React.Component {
@@ -37,8 +38,8 @@ export class CampaignView extends React.Component {
 
     }
     calendarDayChange = (type) => (day) => {
-        this.setState({
-            [type]: day,
+        day && this.setState({
+            [type]: new Date(day.getFullYear(), day.getMonth(), day.getDate()),
         }, () => this.props.fetchCampaignData(this.state.startDate, this.state.endDate, this.state.userInput));
     }
 
@@ -56,10 +57,8 @@ export class CampaignView extends React.Component {
                     <Col>
                         <DayPickerInput
                             formatDate={formatDate}
-                            format={__DATE_FORMAT__}
                             parseDate={parseDate}
                             placeholder={`Start date`}
-                            onDayClick={this.handleDayClick}
                             onDayChange={this.calendarDayChange('startDate')}
                         />
                     </Col>
@@ -67,7 +66,6 @@ export class CampaignView extends React.Component {
                         <DayPickerInput
                             selectedDays={this.state.endDate}
                             formatDate={formatDate}
-                            format={__DATE_FORMAT__}
                             parseDate={parseDate}
                             placeholder={`End date`}
                             onDayChange={this.calendarDayChange('endDate')}
@@ -80,6 +78,7 @@ export class CampaignView extends React.Component {
                         name='userInput'
                         onChange={this.onSearchChange}
                         value={this.state.userInput}
+                        placeholder='Search by name'
                         onSearchClick={() => this.props.fetchCampaignData(this.state.startDate, this.state.endDate, this.state.userInput)}
                     />
                 </Col>
