@@ -1,0 +1,210 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test DataTable component matches the snapshot 1`] = `
+<table
+  className="data-table"
+>
+  <tbody>
+    <tr>
+      <th>
+        Id
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        Start Date
+      </th>
+      <th>
+        End Date
+      </th>
+      <th>
+        Active
+      </th>
+      <th>
+        Budget
+      </th>
+    </tr>
+    <tr>
+      <td
+        className="cell"
+      >
+        1
+      </td>
+      <td
+        className="cell"
+      >
+        Divavu
+      </td>
+      <td
+        className="cell cell-date"
+      >
+        9/19/2017
+      </td>
+      <td
+        className="cell cell-date"
+      >
+        3/9/2018
+      </td>
+      <td
+        className="cell cell-pill"
+      >
+        <span
+          className="badge badge-success"
+        >
+          Active
+        </span>
+      </td>
+      <td
+        className="cell cell-amount"
+      >
+        88.4k USD
+      </td>
+    </tr>
+    <tr>
+      <td
+        className="cell"
+      >
+        2
+      </td>
+      <td
+        className="cell"
+      >
+        Jaxspan
+      </td>
+      <td
+        className="cell cell-date"
+      >
+        11/21/2017
+      </td>
+      <td
+        className="cell cell-date"
+      >
+        2/21/2018
+      </td>
+      <td
+        className="cell cell-pill"
+      >
+        <span
+          className="badge badge-danger"
+        >
+          Inactive
+        </span>
+      </td>
+      <td
+        className="cell cell-amount"
+      >
+        608.7k USD
+      </td>
+    </tr>
+    <tr>
+      <td
+        className="cell"
+      >
+        3
+      </td>
+      <td
+        className="cell"
+      >
+        Miboo
+      </td>
+      <td
+        className="cell cell-date"
+      >
+        11/1/2017
+      </td>
+      <td
+        className="cell cell-date"
+      >
+        6/20/2017
+      </td>
+      <td
+        className="cell cell-pill"
+      >
+        <span
+          className="badge badge-success"
+        >
+          Active
+        </span>
+      </td>
+      <td
+        className="cell cell-amount"
+      >
+        239.5k USD
+      </td>
+    </tr>
+    <tr>
+      <td
+        className="cell"
+      >
+        4
+      </td>
+      <td
+        className="cell"
+      >
+        Trilith
+      </td>
+      <td
+        className="cell cell-date"
+      >
+        8/25/2017
+      </td>
+      <td
+        className="cell cell-date"
+      >
+        11/30/2017
+      </td>
+      <td
+        className="cell cell-pill"
+      >
+        <span
+          className="badge badge-danger"
+        >
+          Inactive
+        </span>
+      </td>
+      <td
+        className="cell cell-amount"
+      >
+        179.8k USD
+      </td>
+    </tr>
+    <tr>
+      <td
+        className="cell"
+      >
+        5
+      </td>
+      <td
+        className="cell"
+      >
+        Layo
+      </td>
+      <td
+        className="cell cell-date"
+      >
+        11/28/2017
+      </td>
+      <td
+        className="cell cell-date"
+      >
+        3/10/2018
+      </td>
+      <td
+        className="cell cell-pill"
+      >
+        <span
+          className="badge badge-success"
+        >
+          Active
+        </span>
+      </td>
+      <td
+        className="cell cell-amount"
+      >
+        837.9k USD
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
