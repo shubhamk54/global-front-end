@@ -42,7 +42,7 @@ const fakeProps = {
     currency: 'USD',
 };
 
-describe('Test DataTable component', () => {
+describe('Snapshot testing for DataTable component', () => {
 
     it('matches the snapshot', () => {
         const tree = renderer.create(<DataTable {...fakeProps} />).toJSON();
@@ -76,6 +76,14 @@ describe('Test DataTable component', () => {
     test('Test for DataTable renders table data for given list of data', () => {
         const wrapper = mount(
             <DataTable {...fakeProps} />
+        );
+        const tableData = wrapper.instance().renderTableData(fakeProps.columns, fakeProps.data);
+        expect(tableData).toHaveLength(fakeProps.data.length);
+    });
+
+    test('DataTable should render with no currency', () => {
+        const wrapper = mount(
+            <DataTable data={fakeProps.data} columns={fakeProps.columns} />
         );
         const tableData = wrapper.instance().renderTableData(fakeProps.columns, fakeProps.data);
         expect(tableData).toHaveLength(fakeProps.data.length);

@@ -110,12 +110,13 @@ class SearchInput extends Component {
 
 
 SearchInput.propTypes = {
+    name: PropTypes.string,
     value: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,
     ]).isRequired,
-    suggestedOptions: PropTypes.array,
     onChange: PropTypes.func.isRequired,
+    suggestedOptions: PropTypes.array,
     onSearchClick: PropTypes.func,
 };
 

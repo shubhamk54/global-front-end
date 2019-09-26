@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot testing for SearchInput component matches the snapshot 1`] = `
+<div
+  className="search-input"
+>
+  <input
+    onChange={[Function]}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    placeholder="Search..."
+    type="text"
+    value="test val"
+  />
+  <button
+    onClick={[Function]}
+  >
+    <i
+      className="fa fa-search"
+    />
+  </button>
+</div>
+`;

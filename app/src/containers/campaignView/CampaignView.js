@@ -88,6 +88,7 @@ export class CampaignView extends React.Component {
             {this.props.gridData.length > 0 ? <Datatable
                 data={this.props.gridData}
                 columns={this.props.columns}
+                currency='USD'
             />
                 : <NoDataAvailable
                     title='Campaign data not available'

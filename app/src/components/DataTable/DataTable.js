@@ -77,8 +77,4 @@ DataTable.propTypes = {
   currency: PropTypes.string,
 };
 
-DataTable.defaultProps = {
-  currency: 'USD',
-};
-
 export default DataTable;

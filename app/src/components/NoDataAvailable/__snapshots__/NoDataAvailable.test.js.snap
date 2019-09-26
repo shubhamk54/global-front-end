@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot testing for NoDataAvailable component matches the snapshot 1`] = `
+<section
+  className="no-data"
+>
+  <p
+    className="no-data-title"
+  >
+    Data not available
+  </p>
+  <p
+    className="no-data-subTitle"
+  >
+    
+  </p>
+</section>
+`;

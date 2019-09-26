@@ -5,7 +5,7 @@ import renderer from 'react-test-renderer';
 
 const fakeProps = { displayName: 'Active' };
 
-describe('Test Badge component', () => {
+describe('Snapshot testing for Badge component', () => {
 
     it('matches the snapshot', () => {
         const tree = renderer.create(<Badge {...fakeProps} />).toJSON();
