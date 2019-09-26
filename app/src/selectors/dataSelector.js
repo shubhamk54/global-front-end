@@ -1,6 +1,6 @@
 
 export function campaignDataSelector({
-  gridData = [], startDate, endDate, searchValue = '',
+  gridData, startDate, endDate, searchValue = '',
 }) {
   let formattedDataGrid = [];
   const currentDateEpoch = new Date().getTime();
@@ -26,7 +26,7 @@ export function campaignDataSelector({
   return formattedDataGrid;
 }
 
-export function campaignNamesSelector(gridData = []) {
+export function campaignNamesSelector(gridData) {
   return gridData.map((dataRow) => dataRow.name);
 }
 

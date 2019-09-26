@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot testing for OptionsList component matches the snapshot 1`] = `
+<ul
+  className="suggestions"
+>
+  <li
+    className=""
+    onClick={[Function]}
+  >
+    test-1
+  </li>
+  <li
+    className="suggestion-active"
+    onClick={[Function]}
+  >
+    test-2
+  </li>
+  <li
+    className=""
+    onClick={[Function]}
+  >
+    test-3
+  </li>
+</ul>
+`;

@@ -56,13 +56,14 @@ class SearchInput extends Component {
         }
         // User pressed the up arrow
         else if (e.keyCode === KeyBoardBinding.UP_ARROW) {
-            if (activeOption === 0) {
+            if (activeOption <= 0) {
                 return;
             }
             this.setState({ activeOption: activeOption - 1 });
         }
         // User pressed the down arrow
         else if (e.keyCode === KeyBoardBinding.DOWN_ARROW) {
+
             if (activeOption - 1 === filteredOptions.length) {
                 return;
             }

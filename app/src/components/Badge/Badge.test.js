@@ -11,19 +11,23 @@ describe('Snapshot testing for Badge component', () => {
         const tree = renderer.create(<Badge {...fakeProps} />).toJSON();
         expect(tree).toMatchSnapshot();
     });
+});
 
-    test('Badge renders the text inside it', () => {
-        const wrapper = mount(
+describe('Unit tests for Badge component', () => {
+
+    let wrapper;
+    beforeEach(() => {
+        wrapper = mount(
             <Badge {...fakeProps} />
         );
+    });
+
+    it('Badge renders the text inside it', () => {
         const span = wrapper.find('.badge');
         expect(span.text()).toBe(fakeProps.displayName);
     });
 
-    test('Badge renders the text inside it', () => {
-        const wrapper = mount(
-            <Badge {...fakeProps} />
-        );
+    it('Badge renders the text inside it', () => {
         const span = wrapper.find('.badge');
         expect(span.text()).not.toBe('Invalid');
     });

@@ -48,8 +48,11 @@ describe('Snapshot testing for DataTable component', () => {
         const tree = renderer.create(<DataTable {...fakeProps} />).toJSON();
         expect(tree).toMatchSnapshot();
     });
+});
 
-    test('DataTable should not renders any table for empty data', () => {
+describe('DataTable testing render with negative data', () => {
+
+    it('DataTable should not renders any table for empty data', () => {
         const wrapper = mount(
             <DataTable data={[]} columns={[]} />
         );
@@ -57,34 +60,36 @@ describe('Snapshot testing for DataTable component', () => {
         expect(table.length).toBe(0);
     });
 
-    test('single table should render for Given column and data', () => {
+    it('DataTable should render with no currency', () => {
         const wrapper = mount(
-            <DataTable {...fakeProps} />
-        );
-        const table = wrapper.find('.data-table');
-        expect(table.length).toBe(1);
-    });
-
-    test('Test for DataTable renders table column header for given list of column', () => {
-        const wrapper = mount(
-            <DataTable {...fakeProps} />
-        );
-        const tableColumns = wrapper.instance().renderTableHeader(fakeProps.columns);
-        expect(tableColumns).toHaveLength(fakeProps.columns.length);
-    });
-
-    test('Test for DataTable renders table data for given list of data', () => {
-        const wrapper = mount(
-            <DataTable {...fakeProps} />
+            <DataTable data={fakeProps.data} columns={fakeProps.columns} />
         );
         const tableData = wrapper.instance().renderTableData(fakeProps.columns, fakeProps.data);
         expect(tableData).toHaveLength(fakeProps.data.length);
     });
 
-    test('DataTable should render with no currency', () => {
-        const wrapper = mount(
-            <DataTable data={fakeProps.data} columns={fakeProps.columns} />
+});
+
+describe('DataTable component function testing', () => {
+
+    let wrapper;
+    beforeEach(() => {
+        wrapper = mount(
+            <DataTable {...fakeProps} />
         );
+    });
+
+    it('single table should render for Given column and data', () => {
+        const table = wrapper.find('.data-table');
+        expect(table.length).toBe(1);
+    });
+
+    it('Test for DataTable renders table column header for given list of column', () => {
+        const tableColumns = wrapper.instance().renderTableHeader(fakeProps.columns);
+        expect(tableColumns).toHaveLength(fakeProps.columns.length);
+    });
+
+    it('Test for DataTable renders table data for given list of data', () => {
         const tableData = wrapper.instance().renderTableData(fakeProps.columns, fakeProps.data);
         expect(tableData).toHaveLength(fakeProps.data.length);
     });
