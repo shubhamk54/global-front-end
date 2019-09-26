@@ -2,7 +2,6 @@ import { abbreviateAmount, validateCampaignData } from './dataUtils';
 
 
 describe('Test campaign data utilities', () => {
-
   it('Test for thousands Amount abbreviate', () => {
     expect(abbreviateAmount(858131)).toBe('858.1k');
   });
