@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CampaignView snapshot testing matches the snapshot 1`] = `
+Array [
+  <nav
+    className="bg-light justify-content-between navbar navbar-expand navbar-light"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <div
+          className="DayPickerInput"
+        >
+          <input
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            placeholder="Start date"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        className="col"
+      >
+        <div
+          className="DayPickerInput"
+        >
+          <input
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            placeholder="End date"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        className="search-input"
+      >
+        <input
+          onChange={[Function]}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          placeholder="Search by name"
+          type="text"
+          value=""
+        />
+        <button
+          onClick={[Function]}
+        >
+          <i
+            className="fa fa-search"
+          />
+        </button>
+      </div>
+    </div>
+  </nav>,
+  <section
+    className="no-data"
+  >
+    <p
+      className="no-data-title"
+    >
+      Campaign data not available
+    </p>
+    <p
+      className="no-data-subTitle"
+    >
+      Please update criteria using available filters
+    </p>
+  </section>,
+]
+`;
