@@ -6,7 +6,7 @@
 /coverage
 
 # production
-/build
+/app/dist
 
 # OS specifics misc
 .DS_Store
