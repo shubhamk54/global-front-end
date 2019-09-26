@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start:dev": "webpack-dev-server --mode developm`ent --config webpack.config.js",
+    "start:dev": "webpack-dev-server --mode development --config webpack.config.js",
     "build": "babel-node --max_old_space_size=8192 helpers/build.js",
     "test": "jest",
     "coverage": "jest --coverage",
