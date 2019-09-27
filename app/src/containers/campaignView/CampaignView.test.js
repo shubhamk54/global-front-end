@@ -18,7 +18,7 @@ const store = mockStore({
   },
 });
 
-const fakeValiddata = [
+const fakeValidData = [
   {
     id: 1, name: 'Divavu', active: { title: 'Active', type: 'success' }, startDate: '9/19/2017', endDate: '3/9/2018', Budget: 88377,
   },
@@ -81,6 +81,7 @@ const fakeProps = {
   {
     id: 5, name: 'Layo', active: { title: 'Active', type: 'success' }, startDate: '11/28/2017', endDate: '3/10/2018', Budget: 837850,
   }],
+  addCampaignData: () => jest.fn(),
   fetchCampaignData: () => jest.fn(),
   dataDesc: 'test test',
   enableFilters: true,
@@ -130,10 +131,11 @@ describe('CampaignView container testing with no grid data supplied yet', () => 
 
 describe('CampaignView container testing when data is avilable', () => {
   let wrapper;
+  let component;
   const dataStore = mockStore({
     data: {
       campaignData: {
-        gridData: fakeValiddata,
+        gridData: fakeValidData,
         dataDesc: 'Please update criteria using available filters',
         enableFilters: true,
       },
@@ -146,10 +148,27 @@ describe('CampaignView container testing when data is avilable', () => {
         <CampaignView {...fakeProps} />
       </Provider>,
     );
+    component = wrapper.find('CampaignView');
   });
+
 
   it('should contain data table component', () => {
     const dataTable = wrapper.find('.data-table');
     expect(dataTable.children()).toHaveLength(1);
   });
+
+  it('should render our connected componenta and have 3 cols(childs)', () => {
+    expect(wrapper.find('CampaignView')).toHaveLength(1);
+    expect(component.find('.col')).toHaveLength(3);
+  });
+
+  it('should test onSearchChange calls update user input.', () => {
+    component.instance().onSearchChange('userInput', 'test-value', false);
+    component.find('SearchInput').instance().onSearchClick();
+    expect(component.state().startDate).toEqual(undefined);
+    expect(component.state().endDate).toEqual(undefined);
+    expect(component.state().userInput).toEqual('test-value');
+
+  });
+  //TODO: test to add for component fucntion tests.
 });

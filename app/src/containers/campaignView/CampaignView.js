@@ -103,6 +103,7 @@ CampaignView.propTypes = {
     gridData: PropTypes.array.isRequired,
     columns: PropTypes.array.isRequired,
     fetchCampaignData: PropTypes.func.isRequired,
+    addCampaignData: PropTypes.func.isRequired,
     dataDesc: PropTypes.string,
     enableFilters: PropTypes.bool,
 };
